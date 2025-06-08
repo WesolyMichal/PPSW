@@ -8,7 +8,7 @@ int main(){
 	UART_InitWithInt(9600);
 	
 	while(1){
-		if (Transmiter_GetStatus() == FREE){
+		if ( Transmiter_GetStatus() == FREE ){
 			UIntToHexStr (uiLicznik, acLiczba + 7);
 			Transmiter_SendString(acLiczba);
 			uiLicznik++;
