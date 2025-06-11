@@ -5,7 +5,7 @@
 #include "konwersje.h"
 #include "dekodowanie.h"
 
-#define MAX_TOKEN_NR 3
+#define MAX_TOKEN_NR 3 
 
 void TestOf_CopyString(void){
 	char cOriginalStr[] = "Test kopiowania";
