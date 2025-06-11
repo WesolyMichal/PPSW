@@ -108,9 +108,9 @@ void TestOf_UIntToHexStr(void) {
   // Sprawdzenie czy funkcja poprawnie zamienia liczby 2479 (0x09AF) na lanuch znakowy, sprawdzenie koncowych przedzialow
   UIntToHexStr(0x09AF,cString);
   if (strcmp(cString, "0x000009AF") == 0) {
-		printf("OK\n"); 
+		printf("OK\n\n"); 
 	} else {
-		printf("Error\n");
+		printf("Error\n\n");
 	}
 }
 
@@ -149,9 +149,9 @@ void TestOf_eHexStringToUInt(void) {
   printf("Test 4 - ");
   // Sprawdzenie czy funkcja poprawnie konwertuje liczby na lanuch znakowy
   if ((eHexStringToUInt(cGoodFormat,&uiResult) == OK) && uiResult == 65000) {
-		printf("OK\n"); 
+		printf("OK\n\n"); 
 	} else {
-		printf("Error\n");
+		printf("Error\n\n");
 	}
 }
 
@@ -174,9 +174,9 @@ void TestOf_AppendUIntToString(void) {
   // Sprawdzenie czy funkcja poprawnie dodaje liczby do konca pustego lancucha znakowego
   AppendUIntToString(uiValue, cDestinationStr2);
   if (strcmp(cDestinationStr2, "0x00000001") == 0) {
-		printf("OK\n"); 
+		printf("OK\n\n"); 
 	} else {
-		printf("Error\n");
+		printf("Error\n\n");
 	}
 }
 
@@ -221,9 +221,9 @@ void TestOf_ucFindTokensInString(void) {
   // Sprawdzenie czy funkcja dziala poprawnie dla dwoch delimiterow miedzy dwoma tokenami
   ucTokenNr = ucFindTokensInString(cString4);
   if (ucTokenNr == 3 && (asToken[0].uValue.pcString == &cString4[0]) && (asToken[1].uValue.pcString == &cString4[6]) && (asToken[2].uValue.pcString == &cString4[9])) {
-		printf("OK\n"); 
+		printf("OK\n\n"); 
 	} else {
-		printf("Error\n");
+		printf("Error\n\n");
 	}
 }
 
@@ -244,9 +244,9 @@ void TestOf_eStringToKeyword(void) {
   printf("Test 2 - ");
   // Sprawdzenie czy funkcja dziala poprawnie przy slowie innym niz slowo kluczowe
   if (eStringToKeyword(cString2,&eTest) == ERROR) {
-		printf("OK\n"); 
+		printf("OK\n\n"); 
 	} else {
-		printf("Error\n");
+		printf("Error\n\n");
 	}
 }
 
@@ -276,9 +276,9 @@ void TestOf_DecodeTokens(void) {
   printf("Test 3 - ");
   // Sprawdzenie czy funkcja dziala poprawnie dla wejsciowej liczby
   if ((asToken[2].eType == NUMBER) && (asToken[2].uValue.uiValue == 0x10)) {
-		printf("OK\n"); 
+		printf("OK\n\n"); 
 	} else {
-		printf("Error\n");
+		printf("Error\n\n");
 	}
 }
 
