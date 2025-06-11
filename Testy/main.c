@@ -251,15 +251,17 @@ void TestOf_eStringToKeyword(void) {
 }
 
 void TestOf_DecodeTokens(void) {
-  char cString[] = "test reset 0x10";
-  ucTokenNr = ucFindTokensInString(cString);
-  ReplaceCharactersInString(cString, ' ', '\0');
+  char cString[] = "test\0reset 0x10";
+  cString[10] = '\0';
+  asToken[0].uValue.pcString = &cString[0];
+  asToken[1].uValue.pcString = &cString[5];
+  asToken[2].uValue.pcString = &cString[11];
   DecodeTokens();
   
   printf("DecodeTokens\n\n");
   printf("Test 1 - ");
   // Sprawdzenie czy funkcja dziala poprawnie dla wejsciowego lancucha znakowego
-  if ((asToken[0].eType == STRING) && (asToken[0].uValue.pcString == cString)) {
+  if ((asToken[0].eType == STRING) && (asToken[0].uValue.pcString == &cString[0])) {
 		printf("OK\n"); 
 	} else {
 		printf("Error\n");
@@ -283,13 +285,15 @@ void TestOf_DecodeTokens(void) {
 }
 
 void TestOf_DecodeMsg(void) {
-  char cStr[] = "test reset 0x10";
+  char cStr[] = "0x10 reset test";
 
   printf("DecodeMsg\n\n ");
   printf("Test 1 - ");
   // Sprawdzenie czy funkcja dziala poprawnie dla wejsciowego lancucha znakowego (pelnej wiadomosci)
   DecodeMsg(cStr);
-  if ((ucTokenNr == 3) && (asToken[0].eType == STRING) && (&cStr[0] == asToken[0].uValue.pcString) && (asToken[1].eType == KEYWORD) && (asToken[1].uValue.eKeyword == RST) && (asToken[2].eType == NUMBER) && (asToken[2].uValue.uiValue == 0x10)) {
+  if ((ucTokenNr == 3) && (asToken[0].eType == NUMBER) &&  (asToken[0].uValue.uiValue == 0x10)&& 
+  (asToken[1].eType == KEYWORD) && (asToken[1].uValue.eKeyword == RST) && 
+  (asToken[2].eType == STRING) && (&cStr[11] == asToken[2].uValue.pcString)) {
 		printf("OK\n"); 
 	} else {
 		printf("Error\n");
