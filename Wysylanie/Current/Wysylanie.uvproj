@@ -413,11 +413,6 @@
               <FilePath>.\main.c</FilePath>
             </File>
             <File>
-              <FileName>servo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\servo.c</FilePath>
-            </File>
-            <File>
               <FileName>string_op.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\string_op.c</FilePath>

@@ -57,6 +57,7 @@ void Transmiter_SendString(char cString[]){
 	sTransmiterBuffer.fLastCharacter = 0;
 	sTransmiterBuffer.ucCharCtr = 0;
 	sTransmiterBuffer.eStatus = BUSY;
+	while (sTransmiterBuffer.eStatus == BUSY){}
 }	
 
 enum eTransmiterStatus Transmiter_GetStatus(void){
@@ -72,7 +73,7 @@ __irq void UART0_Interrupt (void) {
 
    if      ((uiCopyOfU0IIR & mINTERRUPT_PENDING_IDETIFICATION_BITFIELD) == mRX_DATA_AVALIABLE_INTERRUPT_PENDING) // odebrano znak
    {
-		 //Reciever_PutCharacterToBuffer(U0RBR); 
+		 Reciever_PutCharacterToBuffer(U0RBR); 
    } 
    
    if ((uiCopyOfU0IIR & mINTERRUPT_PENDING_IDETIFICATION_BITFIELD) == mTHRE_INTERRUPT_PENDING)              // wyslano znak - nadajnik pusty 
@@ -97,7 +98,7 @@ __irq void UART0_Interrupt (void) {
 void UART_InitWithInt(unsigned int uiBaudRate){
 
    // UART0
-   // PINSEL0 = PINSEL0 | (0x01 << 2) ;                            // ustawic pina na odbiornik uart0
+   PINSEL0 = PINSEL0 | (0x01 << 2) ;                            // ustawic pina na odbiornik uart0
 	 PINSEL0 = PINSEL0 | (0x01 << 0);															// ustawic pina na nadajnik uart0
 	 U0LCR  |= m8BIT_UART_WORD_LENGTH | mDIVISOR_LATCH_ACCES_BIT; // dlugosc slowa, DLAB = 1
    U0DLL   = ((15000000)/16)/uiBaudRate;                        // predkosc transmisji

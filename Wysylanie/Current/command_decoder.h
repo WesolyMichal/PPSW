@@ -1,6 +1,6 @@
 #define MAX_TOKEN_NR 2
 
-enum KeywordCode {CLB, GOTO};
+enum KeywordCode {CLC};
 
 union TokenValue {
 	enum KeywordCode eKeyword; 
@@ -14,7 +14,5 @@ struct Token {
 	enum TokenType eType; 
 	union TokenValue uValue;
 };
-
-
 
 void DecodeMsg(char *pcString);

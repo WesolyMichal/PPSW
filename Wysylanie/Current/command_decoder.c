@@ -3,7 +3,7 @@
 
 #define NULL '\0'
 #define MAX_KEYWORD_STRING_LTH 10
-#define MAX_KEYWORD_NR 2
+#define MAX_KEYWORD_NR 1
 #define DELIMITER_CHAR ' '
 
 struct Token asToken[MAX_TOKEN_NR];
@@ -16,8 +16,7 @@ struct Keyword {
 };
 
 struct Keyword asKeywordList[MAX_KEYWORD_NR]={
-	{CLB,"callib"},
-	{GOTO, "goto" }
+	{CLC, "calc"},
 };
 
 enum State {TOKEN, DELIMITER};
